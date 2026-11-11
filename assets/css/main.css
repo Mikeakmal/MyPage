@@ -3722,3 +3722,88 @@ section,
 .starter-section {
   /* Add your styles here */
 }
+
+
+/* ===== Portfolio: filter + grid foto ===== */
+
+.portfolio .portfolio-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px;
+}
+
+.portfolio .portfolio-filters li {
+  cursor: pointer;
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 15px;
+  color: var(--default-color);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 80%);
+  transition: background .2s, color .2s, border-color .2s;
+}
+
+.portfolio .portfolio-filters li:hover,
+.portfolio .portfolio-filters li.filter-active {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--contrast-color, #fff);
+}
+
+/* Foto: ukuran seragam supaya grid rapi */
+.portfolio .pf-tile {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.portfolio .pf-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+
+.portfolio .pf-tile:hover img {
+  transform: scale(1.07);
+}
+
+/* Keterangan muncul saat hover */
+.portfolio .pf-caption {
+  position: absolute;
+  inset: auto 0 0 0;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 14px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  background: linear-gradient(to top, rgba(0, 0, 0, .75), transparent);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .25s, transform .25s;
+}
+
+.portfolio .pf-caption small {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--accent-color);
+}
+
+.portfolio .pf-tile:hover .pf-caption {
+  opacity: 1;
+  transform: none;
+}
+
+/* Layar sentuh: keterangan selalu terlihat */
+@media (hover: none) {
+  .portfolio .pf-caption {
+    opacity: 1;
+    transform: none;
+  }
+}
